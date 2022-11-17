@@ -1,10 +1,10 @@
 import { getTrendingMovies } from '../../components/Services/API';
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { NavLink, Outlet } from 'react-router-dom';
 
 export const Home = () => {
   const [title, setTitle] = useState([]);
-  const location = useLocation();
+  // const location = useLocation();
 
   useEffect(() => {
     getTrendingMovies().then(setTitle);
