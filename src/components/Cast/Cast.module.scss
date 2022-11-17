@@ -1,0 +1,31 @@
+.cast {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  list-style-type: none;
+}
+
+.text {
+  color: #f9f9f9;
+  font-size: 24px;
+  line-height: 100%;
+}
+
+.titlesmall {
+  color: #f9f9f9;
+  font-weight: 800;
+  font-size: 35px;
+  line-height: 100%;
+}
+
+$n: 4; // number of columns
+$gap: 15px; // margin pixels
+.list {
+  flex: 0 0 calc(100% / $n - (($n - 1) * $gap / $n));
+  text-align: center;
+  border: 1px solid black;
+}
+
+.img {
+  object-fit: cover;
+}

@@ -1,3 +1,9 @@
 .box {
   display: grid;
+  // background: #16181e;
+
+  background: url('../../components/images/background.jpg') no-repeat center
+    center fixed;
+
+  background-size: cover;
 }

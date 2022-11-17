@@ -10,14 +10,17 @@ const navItems = [
 ];
 
 const NavItem = styled(NavLink)`
-  color: #000;
+  color: #f9f9f9;
   text-decoration: none;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 100%;
   &.active {
-    color: rgba(38, 92, 228, 0.784);
+    color: #00b9ae;
   }
   :hover:not(.active),
   :focus-visible:not(.active) {
-    color: #000;
+    color: #f9f9f9;
   }
 `;
 
@@ -26,7 +29,7 @@ const AppBar = () => {
     <div className={css.Appbar}>
       {navItems.map(({ href, text, icon: Icon }) => (
         <NavItem to={href} key={href} className={css.text}>
-          <Icon size="26" /> {text}
+          <Icon size="24" /> {text}
         </NavItem>
       ))}
     </div>

@@ -2,6 +2,7 @@ import { searchMovies } from '../../components/Services/API';
 import { useEffect, useState } from 'react';
 import { NavLink, useSearchParams, useLocation } from 'react-router-dom';
 import LoadingComponent from '../../components/Loader/Loader';
+import css from './Movies.module.scss';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -45,16 +46,36 @@ const Movies = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="query" placeholder="Enter Movie Name"></input>
-        <button type="submit">Search</button>
+        <input
+          className={css.searchbox}
+          type="text"
+          name="query"
+          placeholder="Enter Movie Name"
+        ></input>
+        <button className={css.btnSearch} type="submit">
+          Search
+        </button>
       </form>
       {status === 'pending' && <LoadingComponent />}
       {status === 'resolved' ? (
-        <ul>
+        <ul className={css.items}>
           {movies.map(movie => (
-            <li key={movie.id}>
+            <li key={movie.id} className={css.list}>
               <NavLink to={`${movie.id}`} state={{ from: location }}>
-                {movie.title}
+                <img
+                  src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                  alt={movie.title}
+                  width="300"
+                  height="450"
+                  className={css.img}
+                />
+                <div className={css.text}>
+                  <span>{movie.title}</span>
+                  <span>{movie.vote_average}</span>
+                </div>
+                <button type="button" className={css.btn}>
+                  More
+                </button>
               </NavLink>
             </li>
           ))}
