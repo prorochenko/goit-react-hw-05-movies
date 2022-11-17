@@ -1,26 +1,33 @@
 import toast, { Toaster } from 'react-hot-toast';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Layout } from './Layout/Layout';
+import { Home } from '../pages/Home/Home';
+import { Movies } from '../pages/Movies/Movies';
+import { MoviesDetails } from '../pages/MoviesDetails/MoviesDetails';
+import { Cast } from './Cast/Cast';
+import { Reviews } from './Reviews/Reviews';
 
 export const App = () => {
   const notify = () =>
-    toast('Hello Darkness!', {
-      icon: '👏',
-      style: {
-        borderRadius: '10px',
-        background: '#333',
-        color: '#fff',
-      },
+    toast.success('Good Job! 👏', {
+      position: 'top-right',
     });
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<Layout />}></Route>
-        <Route path="*" element={<p>Path not resolved</p>} />
+        <Route path="/" element={<Layout />}>
+          <Route path="home" element={<Home />}></Route>
+          <Route path="movies" element={<Movies />}>
+            <Route path="movies/:movieID" element={<MoviesDetails />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />}></Route>
+            </Route>
+          </Route>
+        </Route>
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <div>React homework template</div>
       <button type="button" onClick={notify}>
         press me
       </button>

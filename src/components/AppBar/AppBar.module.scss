@@ -1,3 +1,28 @@
 .Appbar {
   display: flex;
+  gap: 25px;
+  align-items: center;
+  // max-width: 500px;
+
+  font-size: 25px;
+  height: 50px;
+  background-color: tomato;
+}
+
+.text {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  &.active {
+    color: green;
+  }
+}
+.text:hover {
+  color: red;
+}
+
+text:hover:not(.active),
+:focus-visible:not(.active) {
+  color: green;
 }

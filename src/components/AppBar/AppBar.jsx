@@ -1,22 +1,31 @@
-import { Link } from 'react-router-dom';
-import { RiMovie2Line } from 'react-icons/ri';
+import { NavLink } from 'react-router-dom';
+import { BiHomeAlt, BiCameraMovie } from 'react-icons/bi';
 import css from './AppBar.module.scss';
+import styled from 'styled-components';
 
 const navItems = [
-  { href: 'home', text: 'Home' },
-  { href: 'movies', text: 'Movies' },
+  { href: 'home', text: 'Home', icon: BiHomeAlt },
+  { href: 'movies', text: 'Movies', icon: BiCameraMovie },
 ];
 
+const NavItem = styled(NavLink)`
+  color: #000;
+  text-decoration: none;
+  &.active {
+    color: rgba(38, 92, 228, 0.784);
+  }
+  :hover:not(.active),
+  :focus-visible:not(.active) {
+    color: #000;
+  }
+`;
 export const AppBar = () => {
   return (
     <div className={css.Appbar}>
-      <Link to="home" key="home">
-        <RiMovie2Line size={50} />
-      </Link>
-      {navItems.map(({ href, text }) => (
-        <Link to={href} key={href}>
-          {text}
-        </Link>
+      {navItems.map(({ href, text, icon: Icon }) => (
+        <NavItem to={href} key={href} className={css.text}>
+          <Icon size="26" /> {text}
+        </NavItem>
       ))}
     </div>
   );
