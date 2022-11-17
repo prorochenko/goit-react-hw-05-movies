@@ -4,7 +4,7 @@ import css from './AppBar.module.scss';
 import styled from 'styled-components';
 
 const navItems = [
-  { href: '/', text: 'Home', icon: BiHomeAlt },
+  { href: 'home', text: 'Home', icon: BiHomeAlt },
   { href: 'movies', text: 'Movies', icon: BiCameraMovie },
 ];
 
@@ -23,7 +23,7 @@ export const AppBar = () => {
   return (
     <div className={css.Appbar}>
       {navItems.map(({ href, text, icon: Icon }) => (
-        <NavItem to={href} key={href} end className={css.text}>
+        <NavItem to={href} key={href} className={css.text}>
           <Icon size="26" /> {text}
         </NavItem>
       ))}

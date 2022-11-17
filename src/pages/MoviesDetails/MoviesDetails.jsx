@@ -1,6 +1,6 @@
 import { getMoviesDetails } from '../../components/Services/API';
 import { useState, useEffect } from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useParams, useLocation, useNavigate, Link } from 'react-router-dom';
 
 import LoadingComponent from '../../components/Loader/Loader';
 
@@ -42,14 +42,15 @@ export const MoviesDetails = () => {
       {status === 'pending' && <LoadingComponent />}
       {status === 'idle' ? (
         <>
-          <p>{`Hello! We are going to our backend to make magic`} </p>
-          <LoadingComponent />
+          <div>{`Hello! We are going to our backend to make magic`} </div>
+          {/* <LoadingComponent /> */}
         </>
       ) : (
         ''
       )}
       {status === 'resolved' ? (
         <div>
+          <Link to="/">&#11013;Go Back</Link>
           <div>
             <img
               src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}

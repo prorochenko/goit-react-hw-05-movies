@@ -1,10 +1,10 @@
 import { getTrendingMovies } from '../../components/Services/API';
 import { useState, useEffect } from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 export const Home = () => {
   const [title, setTitle] = useState([]);
-  // const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     getTrendingMovies().then(setTitle);
@@ -16,7 +16,9 @@ export const Home = () => {
       <ul>
         {title.map(({ id, title }) => (
           <li key={title}>
-            <NavLink to={`movies/${id}`}>{title}</NavLink>
+            <NavLink to={`/movies/${id}`} state={{ from: location }}>
+              {title}
+            </NavLink>
           </li>
         ))}
       </ul>

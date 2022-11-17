@@ -45,7 +45,7 @@ export const Movies = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="query"></input>
+        <input type="text" name="query" placeholder="Enter Movie Name"></input>
         <button type="submit">Search</button>
       </form>
       {status === 'pending' && <LoadingComponent />}
