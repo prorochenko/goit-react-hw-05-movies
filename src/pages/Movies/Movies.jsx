@@ -30,7 +30,7 @@ export const Movies = () => {
       </form>
       <ul>
         {movies.map(movie => (
-          <li>
+          <li key={movie.id}>
             <NavLink to={`${movie.id}`} state={{ from: location }}>
               {movie.title}
             </NavLink>

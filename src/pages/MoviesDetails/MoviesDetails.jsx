@@ -2,6 +2,8 @@ import { getMoviesDetails } from '../../components/Services/API';
 import { useState, useEffect } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
+import LoadingComponent from '../../components/Loader/Loader';
+
 export const MoviesDetails = () => {
   const [details, setDetails] = useState(null);
   const { movieID } = useParams();
@@ -55,7 +57,7 @@ export const MoviesDetails = () => {
           </div>
         </div>
       ) : (
-        ''
+        <LoadingComponent />
       )}
     </>
   );
