@@ -40,7 +40,14 @@ export const MoviesDetails = () => {
   return (
     <>
       {status === 'pending' && <LoadingComponent />}
-      {status === 'idle' ? <p>{`Hello! No information :(`}</p> : ''}
+      {status === 'idle' ? (
+        <>
+          <p>{`Hello! We are going to our backend to make magic`} </p>
+          <LoadingComponent />
+        </>
+      ) : (
+        ''
+      )}
       {status === 'resolved' ? (
         <div>
           <div>

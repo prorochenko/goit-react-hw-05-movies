@@ -1,4 +1,5 @@
 import toast, { Toaster } from 'react-hot-toast';
+import { Suspense } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { Layout } from './Layout/Layout';
@@ -7,6 +8,7 @@ import { Movies } from '../pages/Movies/Movies';
 import { MoviesDetails } from '../pages/MoviesDetails/MoviesDetails';
 import { Cast } from './Cast/Cast';
 import { Reviews } from './Reviews/Reviews';
+import LoadingComponent from '../components/Loader/Loader';
 
 export const App = () => {
   const notify = () =>
@@ -16,17 +18,20 @@ export const App = () => {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="movies" element={<Movies />} />
-          <Route path="movies/:movieID" element={<MoviesDetails />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
+      <Suspense fallback={<LoadingComponent />}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="movies" element={<Movies />} />
+            <Route path="movies/:movieID" element={<MoviesDetails />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+            <Route path="*" element={<Navigate to="/" />} />
           </Route>
-          <Route path="*" element={<Navigate to="/" />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </Suspense>
+
       <button type="button" onClick={notify}>
         press me
       </button>
