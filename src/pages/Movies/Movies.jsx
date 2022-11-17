@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { NavLink, useSearchParams, useLocation } from 'react-router-dom';
 import LoadingComponent from '../../components/Loader/Loader';
 
-export const Movies = () => {
+const Movies = () => {
   const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query');
@@ -65,3 +65,5 @@ export const Movies = () => {
     </>
   );
 };
+
+export default Movies;

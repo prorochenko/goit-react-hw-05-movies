@@ -1,10 +1,16 @@
 import { getMoviesDetails } from '../../components/Services/API';
 import { useState, useEffect } from 'react';
-import { useParams, useLocation, useNavigate, Link } from 'react-router-dom';
+import {
+  useParams,
+  useLocation,
+  useNavigate,
+  Link,
+  Outlet,
+} from 'react-router-dom';
 
 import LoadingComponent from '../../components/Loader/Loader';
 
-export const MoviesDetails = () => {
+const MoviesDetails = () => {
   const [details, setDetails] = useState(null);
   const { movieID } = useParams();
   const location = useLocation();
@@ -37,6 +43,8 @@ export const MoviesDetails = () => {
     fetchMovies();
   }, [movieID, status]);
 
+  const backLinkHref = location.state?.from ?? '/';
+
   return (
     <>
       {status === 'pending' && <LoadingComponent />}
@@ -50,7 +58,7 @@ export const MoviesDetails = () => {
       )}
       {status === 'resolved' ? (
         <div>
-          <Link to="/">&#11013;Go Back</Link>
+          <Link to={backLinkHref}>&#11013;Go Back</Link>
           <div>
             <img
               src={`https://image.tmdb.org/t/p/w500/${details.poster_path}`}
@@ -88,6 +96,7 @@ export const MoviesDetails = () => {
               </button>
             </ul>
           </div>
+          <Outlet />
         </div>
       ) : (
         ''
@@ -139,3 +148,5 @@ export const MoviesDetails = () => {
     </>
   );
 };
+
+export default MoviesDetails;

@@ -2,7 +2,7 @@ import { getTrendingMovies } from '../../components/Services/API';
 import { useState, useEffect } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
-export const Home = () => {
+const Home = () => {
   const [title, setTitle] = useState([]);
   const location = useLocation();
 
@@ -26,3 +26,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;

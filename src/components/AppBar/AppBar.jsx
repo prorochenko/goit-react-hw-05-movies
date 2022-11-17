@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { BiHomeAlt, BiCameraMovie } from 'react-icons/bi';
+
 import css from './AppBar.module.scss';
 import styled from 'styled-components';
 
@@ -19,7 +20,8 @@ const NavItem = styled(NavLink)`
     color: #000;
   }
 `;
-export const AppBar = () => {
+
+const AppBar = () => {
   return (
     <div className={css.Appbar}>
       {navItems.map(({ href, text, icon: Icon }) => (
@@ -30,3 +32,5 @@ export const AppBar = () => {
     </div>
   );
 };
+
+export default AppBar;

@@ -1,15 +1,19 @@
-import css from './layout.module.scss';
-
-import { AppBar } from '../AppBar/AppBar';
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-export const Layout = () => {
+import AppBar from '../AppBar/AppBar';
+import css from './layout.module.scss';
+import LoadingComponent from '../Loader/Loader';
+
+const Layout = () => {
   return (
     <div className={css.box}>
-      <div>
-        <AppBar />
+      <AppBar />
+      <Suspense fallback={LoadingComponent()}>
         <Outlet />
-      </div>
+      </Suspense>
     </div>
   );
 };
+
+export default Layout;
