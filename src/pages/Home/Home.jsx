@@ -1,9 +1,10 @@
 import { getTrendingMovies } from '../../components/Services/API';
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 export const Home = () => {
   const [title, setTitle] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     getTrendingMovies().then(setTitle);
@@ -13,12 +14,13 @@ export const Home = () => {
     <div>
       <h1>Trending Today</h1>
       <ul>
-        {title.map(title => (
-          <li key={title.title}>
-            <NavLink to={`${title.id}`}>{title.title}</NavLink>
+        {title.map(({ id, title }) => (
+          <li key={title}>
+            <NavLink to={`movies/${id}`}>{title}</NavLink>
           </li>
         ))}
       </ul>
+      <Outlet />
     </div>
   );
 };

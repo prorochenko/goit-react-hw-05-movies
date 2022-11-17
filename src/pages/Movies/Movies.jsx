@@ -14,9 +14,9 @@ export const Movies = () => {
       <input></input>
       <button>Search</button>
       <div>
-        {movies.map(movie => (
+        {/* {movies.map(movie => (
           <NavLink to={`${movie.id}`}>{movie.id}</NavLink>
-        ))}
+        ))} */}
       </div>
     </>
   );
